@@ -1,44 +1,76 @@
 # Exp.No:35  
 ## TOWER OF HANOI
 
----
+**AIM:**  
+To implement the Tower of Hanoi problem using a recursive function in Python and display all moves of disks between pegs A, B, and C for a given number of disks.
 
-### AIM  
-To write a Python program to implement **Tower of Hanoi** and display all the moves of the disks using a recursive function.  
-Consider the names of the tower pegs as A, B, C. Get the number of disks value from the user.
+**ALGORITHM:**  
+1. Start  
+2. Define a recursive function `tower_of_hanoi(n, source, target, auxiliary)`  
+3. If `n == 1`, move disk from source to target and print the move  
+4. Else:  
+   a. Move `n-1` disks from source to auxiliary using target as helper  
+   b. Move the nth disk from source to target and print the move  
+   c. Move `n-1` disks from auxiliary to target using source as helper  
+5. Get the number of disks from the user  
+6. Call the recursive function with pegs A (source), C (target), B (auxiliary)  
+7. End  
 
----
+**PROGRAM:**  
+```
+def tower_of_hanoi(n, source, target, auxiliary):
+    if n == 1:
+        print(f"Move disk from {source} to {target}")
+        return
+    tower_of_hanoi(n-1, source, auxiliary, target)
+    print(f"Move disk from {source} to {target}")
+    tower_of_hanoi(n-1, auxiliary, target, source)
 
-### ALGORITHM  
-
-1. **Start the program.**
-2. **Input** the number of disks `n`.
-3. **Print** the number of disks.
-4. Define a **recursive function** `TowerOfHanoi(n, source, destination, auxiliary)`:
-   - If `n == 1`:
-     - Print: "Move disk from source to destination".
-   - Else:
-     - Call `TowerOfHanoi(n - 1, source, auxiliary, destination)`  
-       → Move `n-1` disks from source to auxiliary using destination as helper.
-     - Print: "Move disk from source to destination"  
-       → Move the largest disk to the destination.
-     - Call `TowerOfHanoi(n - 1, auxiliary, destination, source)`  
-       → Move `n-1` disks from auxiliary to destination using source as helper.
-5. Call `TowerOfHanoi(n, 'A', 'C', 'B')` to start the process.
-6. **End the program.**
-
----
-
-### PROGRAM  
-
+n = int(input())
+print(f"No. of disks = {n}")
+tower_of_hanoi(n, 'A', 'C', 'B')
 ```
 
-
+**OUTPUT:**  
+```
+2
+No. of disks = 2
+Move disk from A to B
+Move disk from A to C
+Move disk from B to C
 ```
 
-### OUTPUT
+```
+3
+No. of disks = 3
+Move disk from A to C
+Move disk from A to B
+Move disk from C to B
+Move disk from A to C
+Move disk from B to A
+Move disk from B to C
+Move disk from A to C
+```
 
+```
+4
+No. of disks = 4
+Move disk from A to B
+Move disk from A to C
+Move disk from B to C
+Move disk from A to B
+Move disk from C to A
+Move disk from C to B
+Move disk from A to B
+Move disk from A to C
+Move disk from B to C
+Move disk from B to A
+Move disk from C to A
+Move disk from B to C
+Move disk from A to B
+Move disk from A to C
+Move disk from B to C
+```
 
-
-### RESULT
-
+**RESULT:**  
+The program successfully implements the Tower of Hanoi using recursion and displays all disk moves for any given number of disks. The moves follow the optimal solution of \(2^n - 1\) steps, ensuring the rules of the puzzle are satisfied.
