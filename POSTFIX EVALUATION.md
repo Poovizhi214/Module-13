@@ -1,43 +1,53 @@
 # Exp.No:33  
 ## POSTFIX EVALUATION
 
----
+**Topic:** Evaluation of Postfix Expression Using Stack
 
-### AIM  
-To write a Python program to evaluate a user-given Postfix expression that contains Multiplication and Addition operators using the stack concept.
+**AIM:**  
+To evaluate a user-given postfix expression containing multiplication and addition operators using stack concept.
 
----
+**ALGORITHM:**  
+1. Start  
+2. Create an empty stack  
+3. Read the postfix expression from the user  
+4. Traverse each character in the expression:  
+   a. If the character is a digit, push it onto the stack as an integer  
+   b. If the character is '+', pop two elements, add them, and push the result  
+   c. If the character is '*', pop two elements, multiply them, and push the result  
+5. After processing all characters, the final result is the top element of the stack  
+6. Display the postfix expression and evaluation result  
+7. End  
 
-### ALGORITHM
+**PROGRAM:**  
+```
+def evaluate_postfix(exp):
+    stack = []
+    for ch in exp:
+        if ch.isdigit():
+            stack.append(int(ch))
+        elif ch == '+':
+            b = stack.pop()
+            a = stack.pop()
+            stack.append(a + b)
+        elif ch == '*':
+            b = stack.pop()
+            a = stack.pop()
+            stack.append(a * b)
+    return stack.pop()
 
-1. **Start the program.**
-2. Define a set named `OPERATORS` containing all the valid operators: `*, +, **, -, /, %`.
-3. Define a function `evaluate_postfix(exp)` to evaluate the postfix expression:
-   - Inside the function, create an empty list called `stack` to store operands and intermediate results.
-4. Loop through each item in the given postfix expression:
-   - If the current item is **not in OPERATORS**, it is an operand, so append it to the stack.
-   - If the current item is an **operator**:
-     - Pop the top two elements from the stack (first pop is `a`, second pop is `b`).
-     - Perform the operation `b <operator> a` depending on the current operator.
-     - Store the result in a variable called `result`.
-     - Append the result back to the stack.
-5. After the loop ends, return the first element of the stack as the final evaluation result.
-6. Take a postfix expression as input from the user.
-7. Print the postfix expression.
-8. Call the function `evaluate_postfix()` with the input and print the result.
-9. **End the program.**
-
----
-
-### PROGRAM
-
+exp = input()
+print(f"postfix expression:  {exp}")
+result = evaluate_postfix(exp)
+print(f"Evaluation result:  {result}")
 ```
 
-
+**OUTPUT:**  
+```
+23+45+*
+postfix expression:  23+45+*
+Evaluation result:  45
 ```
 
-### OUTPUT
-
-
-### RESULT
+**RESULT:**  
+The program successfully evaluates the postfix expression containing addition and multiplication operators using stack operations. For the input "23+45+*", the evaluation result is 45, matching the expected output.
 
