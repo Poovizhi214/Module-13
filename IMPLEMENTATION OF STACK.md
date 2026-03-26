@@ -1,31 +1,44 @@
-# Exp.No:31  
-## IMPLEMENTATION OF STACK
+**Topic:** Stack Implementation Using List
 
----
+**AIM:**  
+To implement a stack using Python list with `append()` and `pop()` methods, accept seven items from the user, display the stack, pop five items, and display the stack again.
 
-### AIM  
-To write a Python program to implement a stack using a list and its built-in methods (`append()`, `pop()`).
+**ALGORITHM:**  
+1. Start  
+2. Create an empty list `stack`  
+3. Use a loop to accept 7 items from the user and append each to the stack  
+4. Display the stack with the message "Stack before elements are popped"  
+5. Use a loop to pop 5 items from the stack  
+6. Display the remaining stack with the message "Stack after elements are popped:"  
+7. End  
 
----
-
-### ALGORITHM
-
-1. **Start the program.**
-2. **Define a class `st`** with the following methods:
-   - `push(self, num)`: Adds the number `num` to the stack.
-   - `pop(self)`: Removes and returns the top element from the stack.
-3. **Create a stack object `s`** using the class `st`.
-4. **Input the stack size**: Take an integer input `size` to define the size of the stack.
-5. **Loop through numbers from 1 to size**: Add only the odd numbers to the stack using the `push()` method.
-6. **Display the elements** in the stack after the loop completes.
-7. **Call `pop()`** to remove the top element from the stack and display the popped element.
-8. **Display the stack again** to show the remaining elements.
-9. **End the program.**
-
----
-
-### PROGRAM
-
+**PROGRAM:**  
+```
+stack = []
+for i in range(7):
+    stack.append(input())
+print("Stack before elements are popped")
+print(stack)
+for i in range(5):
+    stack.pop()
+print("Stack after elements are popped:")
+print(stack)
 ```
 
+**OUTPUT:**  
 ```
+Hello
+Everyone!
+Welcome
+to
+Python
+World
+!!!
+Stack before elements are popped
+['Hello', 'Everyone!', 'Welcome', 'to', 'Python', 'World', '!!!']
+Stack after elements are popped:
+['Hello', 'Everyone!']
+```
+
+**RESULT:**  
+The program successfully implements a stack using Python list with `append()` and `pop()` methods. It accepts seven items, displays the stack, removes five items using pop, and displays the remaining two items correctly. All test cases passed with 1.00/1.00 marks.
